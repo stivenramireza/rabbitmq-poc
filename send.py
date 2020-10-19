@@ -2,12 +2,18 @@ import pika
 
 from logger import logger
 
-connection = pika.BlockingConnection(pika.ConnectionParameters('localhost'))
-channel = connection.channel()
 
-channel.queue_declare(queue='hello')
+def main():
+    connection = pika.BlockingConnection(pika.ConnectionParameters('localhost'))
+    channel = connection.channel()
 
-channel.basic_publish(exchange='', routing_key='hello', body='Hello World!')
+    channel.queue_declare(queue='hello')
 
-logger.info(" [x] Sent 'Hello World!'")
-connection.close()
+    channel.basic_publish(exchange='', routing_key='hello', body='Hello World!')
+
+    logger.info(" [x] Sent 'Hello World!'")
+    connection.close()
+
+
+if __name__ == '__main__':
+    main()
