@@ -11,7 +11,7 @@ def main():
 
     channel.basic_publish(exchange='', routing_key='hello', body='Hello World!')
 
-    logger.info(" [x] Sent 'Hello World!'")
+    logger.info("[x] Sent 'Hello World!'")
     connection.close()
 
 
